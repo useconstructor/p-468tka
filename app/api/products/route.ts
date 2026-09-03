@@ -34,6 +34,10 @@ export async function GET() {
       sql: 'INSERT INTO products (name, price, description) VALUES (?, ?, ?)',
       args: ['Estante Flotante', '$85', 'estante de pared en madera de pino con acabado natural, capacidad 15kg'],
     })
+    await db.execute({
+      sql: 'INSERT INTO products (name, price, description) VALUES (?, ?, ?)',
+      args: ['Lámpara de Mesa', '$65', 'base de madera torneada con pantalla de lino natural, incluye bombilla LED'],
+    })
   }
 
   const result = await db.execute({
