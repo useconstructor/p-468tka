@@ -11,15 +11,24 @@ export default function HomePage() {
 
   const navLinks = [
     { name: 'Collections', href: '#products' },
+    { name: 'Materials', href: '#materials' },
     { name: 'Our Story', href: '#about' },
+    { name: 'Journal', href: '#journal' },
     { name: 'Contact', href: '#contact' },
   ]
 
+  const stats = [
+    { value: '178+', label: 'Pieces Crafted' },
+    { value: '32', label: 'Artisans' },
+    { value: '12', label: 'Years of Craft' },
+    { value: '5', label: 'Colombian Regions' },
+  ]
+
   const featuredProducts = [
-    { name: 'Andes Dining Table', price: '$2,450', image: '/images/hero.png' },
-    { name: 'Sierra Lounge Chair', price: '$1,680', image: '/images/feature.png' },
-    { name: 'Páramo Sideboard', price: '$2,980', image: '/images/hero.png' },
-    { name: 'Valle Side Table', price: '$620', image: '/images/feature.png' },
+    { name: 'Andes Dining Table', price: '$2,450', image: '/hero.png' },
+    { name: 'Sierra Lounge Chair', price: '$1,680', image: '/feature.png' },
+    { name: 'Páramo Sideboard', price: '$2,980', image: '/hero.png' },
+    { name: 'Valle Side Table', price: '$620', image: '/feature.png' },
   ]
 
   return (
@@ -33,7 +42,7 @@ export default function HomePage() {
             </Link>
 
             {/* Desktop Nav */}
-            <div className="hidden md:flex items-center gap-12">
+            <div className="hidden md:flex items-center gap-10">
               {navLinks.map((link) => (
                 <Link key={link.name} href={link.href} className="text-sm font-medium tracking-wide transition-colors hover:opacity-70" style={{ color: '#5C3D2E' }}>
                   {link.name}
@@ -77,26 +86,46 @@ export default function HomePage() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20">
-        <div className="absolute inset-0">
-          <Image src="/images/hero.png" alt="Handcrafted wooden furniture in sunlit room" fill className="object-cover" priority />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#FAF1E8]/40 via-transparent to-[#FAF1E8]/60" />
+      <section className="relative min-h-screen flex items-center pt-20">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full">
+          <div className="grid lg:grid-cols-2 gap-12 items-center min-h-[calc(100vh-80px)]">
+            <div className="py-12 lg:py-0">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl font-serif leading-[1.1] mb-8" style={{ color: '#5C3D2E', fontFamily: 'Playfair Display, serif' }}>
+                Furniture with Soul.
+                <br />
+                Crafted by Hand.
+              </h1>
+              <p className="text-base sm:text-lg md:text-xl max-w-xl mb-10 leading-relaxed" style={{ color: '#8B7355' }}>
+                Timeless furniture, handcrafted in small batches by master artisans using responsibly sourced wood and natural materials.
+              </p>
+              <Link href="#products">
+                <Button className="text-white px-10 py-6 text-base rounded-full hover:opacity-90 transition-opacity" style={{ backgroundColor: '#C85A54' }}>
+                  Explore Collections
+                </Button>
+              </Link>
+            </div>
+            <div className="relative aspect-[4/5] lg:aspect-square rounded-2xl overflow-hidden">
+              <Image src="/feature.png" alt="Minimalist wooden chair with plant" fill className="object-cover" priority />
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif leading-[1.1] mb-8" style={{ color: '#5C3D2E', fontFamily: 'Playfair Display, serif' }}>
-            Furniture with Soul.
-            <br />
-            Crafted by Hand.
-          </h1>
-          <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" style={{ color: '#8B7355' }}>
-            Timeless furniture, handcrafted in small batches by master artisans using responsibly sourced wood and natural materials.
-          </p>
-          <Link href="#products">
-            <Button className="text-white px-10 py-6 text-base rounded-full hover:opacity-90 transition-opacity" style={{ backgroundColor: '#C85A54' }}>
-              Explore Collections
-            </Button>
-          </Link>
+      {/* Statistics Bar */}
+      <section className="py-16" style={{ backgroundColor: '#5C3D2E' }}>
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {stats.map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-4xl md:text-5xl font-serif text-white mb-2" style={{ fontFamily: 'Playfair Display, serif' }}>
+                  {stat.value}
+                </div>
+                <div className="text-sm text-white/70 tracking-wide uppercase">
+                  {stat.label}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -136,7 +165,10 @@ export default function HomePage() {
       <section id="about" className="py-24" style={{ backgroundColor: '#F5E6D3' }}>
         <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="order-2 lg:order-1">
+            <div className="relative aspect-[4/5] rounded-2xl overflow-hidden">
+              <Image src="/hero.png" alt="Artisan woodworking in Colombian workshop" fill className="object-cover" />
+            </div>
+            <div>
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif leading-tight mb-8" style={{ color: '#5C3D2E', fontFamily: 'Playfair Display, serif' }}>
                 Rooted in Tradition.
                 <br />
@@ -151,9 +183,6 @@ export default function HomePage() {
                 </Button>
               </Link>
             </div>
-            <div className="relative aspect-[4/5] rounded-lg overflow-hidden order-1 lg:order-2">
-              <Image src="/images/feature.png" alt="Artisan woodworking in Colombian workshop" fill className="object-cover" />
-            </div>
           </div>
         </div>
       </section>
@@ -161,7 +190,7 @@ export default function HomePage() {
       {/* Contact CTA */}
       <section id="contact" className="py-24 relative overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/images/hero.png" alt="Workshop background" fill className="object-cover" />
+          <Image src="/hero.png" alt="Workshop background" fill className="object-cover" />
           <div className="absolute inset-0 bg-[#5C3D2E]/85" />
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
