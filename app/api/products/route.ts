@@ -38,6 +38,10 @@ export async function GET() {
       sql: 'INSERT INTO products (name, price, description) VALUES (?, ?, ?)',
       args: ['Lámpara de Mesa', '$65', 'base de madera torneada con pantalla de lino natural, incluye bombilla LED'],
     })
+    await db.execute({
+      sql: 'INSERT INTO products (name, price, description) VALUES (?, ?, ?)',
+      args: ['Espejo Vintage', '$200', 'espejo de 60x80cm con marco de madera envejecida, acabado a mano'],
+    })
   }
 
   const result = await db.execute({
